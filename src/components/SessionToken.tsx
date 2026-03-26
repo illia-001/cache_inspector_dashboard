@@ -31,8 +31,11 @@ export default function SessionToken() {
   return (
     <div className="flex flex-col bg-gray-800 rounded-lg shadow-md p-4 gap-y-2">
       <h2 className="text-lg font-bold mb-2">Session Token</h2>
-      <p className="flex flex-wrap gap-1">
-        <strong>Token:</strong>
+      <p
+        className=" truncate"
+        title={token ? token : ''}
+      >
+        <strong>Token: </strong>
         {token}
       </p>
       <p>

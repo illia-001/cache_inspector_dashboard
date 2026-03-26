@@ -1,6 +1,6 @@
 # Cache Inspector Dashboard
 
-[Live Preview](https://github.com/)
+[Live Preview](https://illia-001.github.io/cache_inspector_dashboard/)
 
 # Functional blocks
 
