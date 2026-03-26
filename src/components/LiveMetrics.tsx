@@ -65,7 +65,16 @@ export default function LiveMetrics() {
 
       <button
         onClick={services.toggleLive}
-        className={`px-3 py-1 rounded mt-2 cursor-pointer ${live ? 'bg-blue-800/70 hover:bg-blue-800/100' : 'bg-gray-600/70 hover:bg-gray-600/100'}`}
+        className={`px-3
+          py-1
+          rounded
+          mt-2
+          cursor-pointer
+          ${
+            live ?
+              'bg-blue-800/70 hover:bg-blue-800/100'
+            : 'bg-gray-600/70 hover:bg-gray-600/100'
+          }`}
       >
         {live ? 'Pause' : 'Live'}
       </button>

@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
 import * as services from '../store/useSessionToken';
-const TOKEN_TTL_MS = 60_000;
+import { TOKEN_TTL_MS } from '../utils/constants';
+import { useEffect, useState } from 'react';
 
 export default function SessionToken() {
   const [ageSeconds, setAgeSeconds] = useState(0);
@@ -29,7 +29,16 @@ export default function SessionToken() {
   }, [createdAt]);
 
   return (
-    <div className="flex flex-col bg-gray-800 rounded-lg shadow-md p-4 gap-y-2">
+    <div
+      className="flex
+        flex-col
+        bg-gray-800
+        rounded-lg
+        shadow-md
+        p-4
+        gap-y-2
+      "
+    >
       <h2 className="text-lg font-bold mb-2">Session Token</h2>
       <p
         className=" truncate"

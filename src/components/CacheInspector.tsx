@@ -1,4 +1,5 @@
 import { clearCache, refreshCache, useItems } from '../store/useCacheInspector';
+import { LocalStorageKeys } from '../types/LocalStorageKeys';
 
 export default function CacheInspector() {
   const items = useItems();
@@ -10,13 +11,35 @@ export default function CacheInspector() {
       <div className="flex gap-2 mb-4">
         <button
           onClick={refreshCache}
-          className="bg-blue-800/70 px-3 py-1 rounded cursor-pointer hover:bg-blue-800/100 transition-colors duration-200"
+          className="
+            bg-blue-800/70
+            px-3
+            py-1
+            rounded
+            cursor-pointer
+            hover:bg-blue-800/100
+            transition-colors
+            duration-200
+          "
         >
           Refresh
         </button>
         <button
           onClick={clearCache}
-          className="bg-red-800/70 px-3 py-1 box-border rounded cursor-pointer hover:bg-red-800/100 transition-colors duration-200"
+          className="
+            bg-red-800/70
+            px-3
+            py-1
+            box-border
+            rounded
+            cursor-pointer
+            hover:bg-red-800/100
+            disabled:bg-gray-600
+            disabled:cursor-default 
+            transition-colors 
+            duration-200 
+          "
+          disabled={items.length === 0}
         >
           Clear Cache
         </button>
@@ -36,7 +59,7 @@ export default function CacheInspector() {
               <tr
                 key={item.key}
                 className={
-                  item.key === 'cache_token' ?
+                  item.key === LocalStorageKeys.Token ?
                     'bg-green-700'
                   : 'border-b border-gray-700'
                 }

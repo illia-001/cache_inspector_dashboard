@@ -1,5 +1,6 @@
 import { create, type StateCreator } from 'zustand';
 import { createToken } from '../utils/generateRandomToken';
+import { LocalStorageKeys } from '../types/LocalStorageKeys';
 
 interface InitialState {
   token: string | null;
@@ -14,10 +15,10 @@ interface Actions {
 interface SessionTokenState extends InitialState, Actions {}
 
 const initialState: InitialState = {
-  token: localStorage.getItem('cache_token'),
+  token: localStorage.getItem(LocalStorageKeys.Token),
   createdAt:
-    localStorage.getItem('cache_token_created') ?
-      Number(localStorage.getItem('cache_token_created'))
+    localStorage.getItem(LocalStorageKeys.CreatedAt) ?
+      Number(localStorage.getItem(LocalStorageKeys.CreatedAt))
     : null,
 };
 
