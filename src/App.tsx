@@ -1,49 +1,23 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from './assets/vite.svg';
-import heroImg from './assets/hero.png';
-import './App.css';
+import LiveMetrics from './components/LiveMetrics';
+import CacheInspector from './components/CacheInspector';
+import RequestLog from './components/RequestLog';
+import SessionToken from './components/SessionToken';
 
-function App() {
-  const [count, setCount] = useState(0);
-
+export default function App() {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img
-            src={heroImg}
-            className="base"
-            width="170"
-            height="179"
-            alt=""
-          />
-          <img
-            src={reactLogo}
-            className="framework"
-            alt="React logo"
-          />
-          <img
-            src={viteLogo}
-            className="vite"
-            alt="Vite logo"
-          />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-    </>
+    <div className="bg-gray-900 text-gray-100 min-h-screen p-6 grid gap-6 grid-cols-2">
+      <div className="col-span-2 max-h-[300px]">
+        <SessionToken />
+      </div>
+      <div className="col-span-2 md:col-span-1 max-h-[300px]">
+        <LiveMetrics />
+      </div>
+      <div className="col-span-2 md:col-span-1 max-h-[300px]">
+        <CacheInspector />
+      </div>
+      <div className="col-span-2">
+        <RequestLog />
+      </div>
+    </div>
   );
 }
-
-export default App;
