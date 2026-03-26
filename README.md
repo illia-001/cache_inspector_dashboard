@@ -25,7 +25,7 @@
 
 ### Request Log
 
-- Log of the last 10 requests (simulated fetch or real public API).
+- Log of the last 10 requests to the public API.
 - For each entry: time, status, delay (ms).
 - Filtering by status: All / Success / Error.
 

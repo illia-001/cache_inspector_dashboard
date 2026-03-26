@@ -1,3 +1,5 @@
+import { LocalStorageKeys } from '../types/LocalStorageKeys';
+
 function generateRandomToken() {
   const bytes = new Uint8Array(48);
   crypto.getRandomValues(bytes);
@@ -11,8 +13,8 @@ function generateRandomToken() {
 export function createToken(): [string, number] {
   const newToken = generateRandomToken();
   const createdAt = Date.now();
-  localStorage.setItem('cache_token', newToken);
-  localStorage.setItem('cache_token_created', createdAt.toString());
+  localStorage.setItem(LocalStorageKeys.Token, newToken);
+  localStorage.setItem(LocalStorageKeys.CreatedAt, createdAt.toString());
 
   return [newToken, createdAt];
 }
