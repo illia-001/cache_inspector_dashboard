@@ -30,7 +30,6 @@ const sessionToken: StateCreator<SessionTokenState> = (set) => ({
   },
 
   clear: () => {
-    localStorage.clear();
     set({ token: null, createdAt: null });
   },
 });

@@ -1,6 +1,6 @@
 import * as services from '../store/useSessionToken';
-import { TOKEN_TTL_MS } from '../utils/constants';
 import { useEffect, useState } from 'react';
+import { getTokenAge } from '../utils/getTokenAge';
 
 export default function SessionToken() {
   const [ageSeconds, setAgeSeconds] = useState(0);
@@ -17,12 +17,8 @@ export default function SessionToken() {
     if (!createdAt) return;
 
     const interval = setInterval(() => {
-      const ageMs = Date.now() - createdAt;
-      setAgeSeconds(Math.floor(ageMs / 1000));
-
-      if (ageMs >= TOKEN_TTL_MS) {
-        services.generateToken();
-      }
+      const age = getTokenAge(createdAt);
+      setAgeSeconds(age);
     }, 1000);
 
     return () => clearInterval(interval);
@@ -55,23 +51,6 @@ export default function SessionToken() {
         <strong>Age: </strong>
         {ageSeconds} seconds
       </p>
-      <button
-        onClick={services.clearToken}
-        className="
-          max-w-full
-          md:w-[150px]
-          bg-red-800/70
-          px-4
-          py-1
-          rounded
-          cursor-pointer
-          hover:bg-red-800/100
-          transition-colors
-          duration-200
-        "
-      >
-        Clear Cache
-      </button>
     </div>
   );
 }

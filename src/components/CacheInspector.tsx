@@ -1,8 +1,14 @@
 import { clearCache, refreshCache, useItems } from '../store/useCacheInspector';
+import { clearToken } from '../store/useSessionToken';
 import { LocalStorageKeys } from '../types/LocalStorageKeys';
 
 export default function CacheInspector() {
   const items = useItems();
+
+  function handleClearCache() {
+    clearCache();
+    clearToken();
+  }
 
   return (
     <div className="bg-gray-800 rounded-lg shadow-md p-4 h-full overflow-auto">
@@ -25,7 +31,7 @@ export default function CacheInspector() {
           Refresh
         </button>
         <button
-          onClick={clearCache}
+          onClick={handleClearCache}
           className="
             bg-red-800/70
             px-3
